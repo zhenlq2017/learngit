@@ -1,0 +1,53 @@
+git 学习总结：
+
+【1】本地仓库
+	一、本地创建Git版本库
+		1、git init    #初始化本地Git仓库
+		2、添加文件到Git仓库，分两步：
+			2.1 git add <file> #可反复多次使用，添加多个文件到[暂存区]；
+			2.2 git commit -m "有意义的说明"     [将暂存区的所有文件提交到当前分支]；
+		
+	二、版本回退
+		1、git status  #查看当前工作区的状态，有没有被修改过的文件
+		2、git diff    #若有被修改过的文件，可以查看修改的内容(不适合图像、音视频、excel等二进制文件查看，只能看到被修改过，无法看到被修改的内容)
+		3、git log #查看历史更改记录(显示的顺序从近到远)   参数 --pretty=oneline 可以简化输出内容：为方便下面的演示，将版本历史变化附到下方：
+		$ git log --pretty=oneline
+		7514ae10b7aaa7ef7bdbcaa930cdad328e7c7b9a append GPL
+		4df0355996fc9978efb87281acde7eb8f4ed60d6 add somenumber in cs.xlsz
+		7283fb95d7878c82c27b7b6759adc1cd6a3ef3d4 add a microsoft excel file
+		483cecdfc8671e685e848cb2274ab83249170607 add a  Microsoft word file
+		bd8f52d84f9282961ab0c0e8c76a1b835d613ba6 add distributed
+		885f9c42ca020a5d0c6957b053ef33ceab6fc34f wrote a readme file
+		4、回退历史操作：
+			4.1 用HEAD表示当前版本，上一个版本为HEAD^，上上一个版本就是HEAD^^，如果时间过长，可以使用HEAD~n(你表示第几个版本)，往上20个版本就是HEAD~20；
+			4.2 git reset --hard HEAD^  #回退到上一个版本，--hard参数暂不做解释
+		5、前往未来版本操作：
+			方法一：如果之前的窗口没关，往上翻，找到最近的版本7514ae10b7......,然后使用git reset --hard 514ae10b7；
+			方法er: 如果之前的窗口已关，则使用git reflog  #记录每次的操作，第一列就是每次更新的版本号即commit id
+			$ git reflog
+			7514ae1 HEAD@{0}: reset: moving to 7514ae10b7
+			4df0355 HEAD@{1}: reset: moving to HEAD^
+			7514ae1 HEAD@{2}: commit: append GPL
+			4df0355 HEAD@{3}: commit: add somenumber in cs.xlsz
+			7283fb9 HEAD@{4}: commit: add a microsoft excel file
+			483cecd HEAD@{5}: commit: add a Microsoft word file
+			bd8f52d HEAD@{6}: commit: add distributed
+			885f9c4 HEAD@{7}: commit (initial): wrote a readme file
+		6、理解暂存区与工作区(http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013745374151782eb658c5a5ca454eaa451661275886c6000)
+		#git 分为两大区域：工作区(初始化的目录)和版本库(.git 目录)，版本库里最重要的分类是暂存区、分支。
+	三、撤销修改
+		git checkout -- file 意思就是，把file文件在工作区的修改全部撤销，这里有两种情况：
+		一种是文件自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+		一种是文件已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+		总之，就是让这个文件回到最近一次git commit或git add时的状态。
+		如何将放到暂存区的文件回退到最近一次提交的版本：
+			3.1 git reset HEAD file可以把暂存区的修改撤销掉（unstage），重新放回工作区  #当我们用HEAD时，表示最新的版本
+			3.2 git checkout -- file
+			
+	四、删除文件
+		1、如果是在工作区，rm误删除的话，可以很简单的就能恢复：git checkout --  file 
+		2、如果要彻底从版本库删除，先git rm file    再 git  commit -m  'remove file'
+
+【2】远程仓库
+		
+	

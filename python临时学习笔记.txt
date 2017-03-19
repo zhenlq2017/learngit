@@ -1,0 +1,151 @@
+django1.10    管理界面中文显示：setting.py 中 MIDDLEWARE  变量添加 "django.middleware.locale.LocaleMiddleware"
+
+
+
+pip install --upgrade virtualenv    升级软件包
+
+
+
+virtualenv 安装与使用：
+
+安装：
+pip install  virtualenv
+
+如果已经安装了，若不是最新版本，可通过pip升级：
+
+pip install --upgrade virtualenv
+
+
+使用：
+virtualenv  test_env(创建虚拟环境名称)
+常见参数说明：
+--no-site-packages(已经安装到系统Python环境中的所有第三方包都不会复制过来，得到了一个不带任何第三方包的“干净”的Python运行环境，默认选项)
+-system-site-packages   (复制已经安装到系统Python环境中的所有第三方包)
+--distribute (使用新的基于发行版的包管理系统而不是 setuptools 获得的包，该选项会自动在新的虚拟环境中安装 pip ，这样就不需要手动安装了)
+
+
+cd   test_env
+
+source  ./bin/activate   激活虚拟环境
+(test_env)[root@localhost bin]      (激活成功后，在命令行前面会出现虚拟名称)
+
+deactivate  #离开虚拟环境
+
+
+virtualenvwrapper是用来管理virtualenv的扩展包，用着很方便。
+
+1. 安装：
+
+#安装virtualenv
+(sudo) pip install virtualenv
+
+#安装virtualenvwrapper
+(sudo) pip install virtualenvwrapper
+ 
+
+2. 配置：
+
+修改~/.bash_profile或其它环境变量相关文件(如 .bashrc（我的Ubuntu15.10 下的是这个） 或用 ZSH 之后的 .zshrc)，添加以下语句：
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/workspace
+source /usr/local/bin/virtualenvwrapper.sh
+然后运行：
+
+source ~/.bash_profile
+ 
+
+3. 用法：
+
+mkvirtualenv zqxt：创建运行环境zqxt
+
+workon zqxt: 工作在 zqxt 环境 或 从其它环境切换到 zqxt 环境
+
+deactivate: 退出终端环境
+
+ 
+
+其它的：
+
+rmvirtualenv ENV：删除运行环境ENV
+
+mkproject mic：创建mic项目和运行环境mic
+
+mktmpenv：创建临时运行环境
+
+lsvirtualenv: 列出可用的运行环境
+
+lssitepackages: 列出当前环境安装了的包
+
+创建的环境是独立的，互不干扰，无需sudo权限即可使用 pip 来进行包的管理。
+
+
+
+
+PIP 使用 
+列出已安装的包
+pip freeze or pip list
+
+导出requirements.txt
+
+pip freeze > <目录>/requirements.txt
+
+安装包
+在线安装
+
+pip install <包名> 或 pip install -r requirements.txt
+
+通过使用== >= <= > <来指定版本，不写则安装最新版
+
+requirements.txt内容格式为：
+
+APScheduler==2.1.2
+Django==1.5.4
+MySQL-Connector-Python==2.0.1
+MySQL-python==1.2.3
+PIL==1.1.7
+South==1.0.2
+django-grappelli==2.6.3
+django-pagination==1.0.7
+安装本地安装包
+
+pip install <目录>/<文件名> 或 pip install --use-wheel --no-index --find-links=wheelhouse/ <包名>
+
+<包名>前有空格
+
+可简写为
+
+pip install --no-index -f=<目录>/ <包名>
+
+卸载包
+
+pip uninstall <包名> 或 pip uninstall -r requirements.txt
+
+升级包
+
+pip install -U <包名>
+
+或：pip install <包名> --upgrade
+
+升级pip
+
+pip install -U pip
+
+显示包所在的目录
+pip show -f <包名>
+
+搜索包
+pip search <搜索关键字>
+
+查询可升级的包
+pip list -o
+
+下载包而不安装
+pip install <包名> -d <目录> 或 pip install -d <目录> -r requirements.txt
+
+打包
+pip wheel <包名>
+
+
+
+
