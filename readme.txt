@@ -12,4 +12,8 @@ asdfghjkl
 >>>>>>> dev
 =======
 000000
+<<<<<<< HEAD
+>>>>>>> dev
+=======
+pppppppppppppppppp
 >>>>>>> dev
