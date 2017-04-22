@@ -5,3 +5,4 @@ Git tracks changes of files.
 23456789
 dfghjkl
 asdfghjkl
+000000
