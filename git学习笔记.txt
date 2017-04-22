@@ -83,8 +83,26 @@ git 学习总结：
 				git merge dev
 				合并完成后，就可以放心地删除dev分支了：
 				git branch -d dev
+				git push origin master --推送到远程主分支
+				注：每次合并分支时，先从远程分支拉取最新的内容到本地，再修改合并，不然主分支合并时容易造成冲突
 		2)解决冲突
-		
+		 git merge 时末尾出现 (master|MERGING)，并有如下提示：
+			$ git merge dev
+			Auto-merging readme.txt
+			CONFLICT (content): Merge conflict in readme.txt
+			Automatic merge failed; fix conflicts and then commit the result.
+		这是因为，当前主分支比远程主分支提前n个提交，；可以通过git status 查看：
+		$ git status
+		On branch master
+		Your branch is ahead of 'origin/master' by 2 commits.
+		解决办法：
+		主分支操作：git add .    git commit  -m 'xxxxxxx' 
+		避免：每次更新时，事先从远程分支拉取最新的提交
+		查看分支合并情况：
+		git log --graph --pretty=oneline --abbrev-commit
+
+
+
 	
 
 
