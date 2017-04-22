@@ -8,4 +8,8 @@ add branch dev
 23456789
 dfghjkl
 asdfghjkl
+<<<<<<< HEAD
+>>>>>>> dev
+=======
+000000
 >>>>>>> dev
