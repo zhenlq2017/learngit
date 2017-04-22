@@ -16,5 +16,9 @@ asdfghjkl
 >>>>>>> dev
 =======
 pppppppppppppppppp
+<<<<<<< HEAD
 >>>>>>> dev
 kkkkkkkkkkkkkkkkkkk
+=======
+llllllllllllllllllllllllllll
+>>>>>>> dev
