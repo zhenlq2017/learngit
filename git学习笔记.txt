@@ -114,7 +114,17 @@ git 学习总结：
 			恢复之前的未提交的分支：
 			1、git stash apply stash@{0} 	但是恢复后，stash内容并不删除，你需要用git stash drop stash@{0} 来删除；
 			2、git stash pop，恢复的同时把stash内容也删了
-
+		5) 其他
+			查看远程库信息，使用git remote -v
+			从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交 
+			在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致
+			如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream branch-name origin/branch-name。
+			如果要丢弃一个没有被合并过的分支，可以通过git如果要丢弃一个没有被合并过的分支，可以通过git branch -D <name>强行删除
+【4】 标签管理
+	Git有commit，为什么还要引入tag？
+	commit提交的版本号较长，不容易查找
+	tag就是一个让人容易记住的有意义的名字，它跟某个commit绑在一起
+	
 	
 
 
